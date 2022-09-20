@@ -3,4 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+        #  :confirmable
+
+  validates :role, numericality: { greater_than_or_equal_to: 0, less_than: 2 }
 end

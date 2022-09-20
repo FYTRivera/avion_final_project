@@ -1,0 +1,11 @@
+<div id="<%= dom_id user %>">
+    
+    <p>ID: <%= user.id%></p>
+    <p>Email: <%= user.email%></p>
+    <p>First Name: <%= user.first_name%></p>
+    <p>Last Name: <%= user.last_name%></p>
+    <p>Age: <%= user.age%></p>
+    <%# <p>Confirmed on: <%= user.confirmed_at</p> %>
+    <p>Role: <%= user.role == 0 ? "Client" : "Doctor" %></p>
+
+</div>
