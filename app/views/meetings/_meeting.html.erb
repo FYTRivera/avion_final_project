@@ -5,6 +5,11 @@
   </p>
 
   <p>
+    <strong>Doctor:</strong>
+    <%= @doctor.first_name %> <%= @doctor.last_name %>
+  </p>
+
+  <p>
     <strong>Start time:</strong>
     <%= meeting.start_time %>
   </p>
@@ -15,8 +20,13 @@
   </p>
 
   <p>
-    <strong>User:</strong>
-    <%= meeting.user_id %>
+    <strong>Is Booked? :</strong>
+    <%= meeting.is_booked %> 
+  </p>
+
+  <p>
+    <strong>Client:</strong>
+    <%= meeting.client_email %> 
   </p>
 
 </div>

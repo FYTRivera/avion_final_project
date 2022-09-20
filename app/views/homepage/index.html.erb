@@ -5,6 +5,7 @@
     <h1>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h1>
     <% if @user.role == 1 %>
         <p><%= link_to "All Users", users_path%></p>
+        <p><%= link_to "New Meeting", new_meeting_path %>
     <% else %>
     <% end %>
     <p><%= link_to "Edit Account", edit_user_registration_path %></p>

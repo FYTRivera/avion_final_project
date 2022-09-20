@@ -4,7 +4,7 @@
 
 <div id="meetings">
   <% @meetings.each do |meeting| %>
-    <%= render meeting %>
+    <%= render 'meeting', meeting: meeting, doctor: @doctor %>
     <p>
       <%= link_to "Show this meeting", meeting %>
     </p>

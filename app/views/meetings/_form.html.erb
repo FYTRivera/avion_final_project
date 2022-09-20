@@ -28,9 +28,25 @@
 
   <div>
     <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id, value: current_user.id %>
   </div>
 
+  <% if current_user.role == 0 %>
+  <div>
+    <div class="field">
+    <%= form.label "Book Session?" %><br />
+    <%= form.label :is_booked, "Yes", value: "true"  %>
+    <%= form.radio_button :is_booked, true, checked: meeting.is_booked %>
+    <%= form.label :is_booked, "No", value: "false" %>
+    <%= form.radio_button :is_booked, false, checked: !meeting.is_booked %>
+    </div>
+  </div>
+  <%else%>
+    <div>
+      <%= form.label :client_email, style: "display: block" %>
+      <%= form.text_field :client_email %>
+    </div>
+  <%end%>
   <div>
     <%= form.submit %>
   </div>
