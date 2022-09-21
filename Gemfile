@@ -18,6 +18,12 @@ gem "pg"
 # Devise
 gem "devise"
 
+#Simple Calendar
+gem 'simple_calendar', '~> 2.4', '>= 2.4.3'
+
+# Sass
+gem 'sass-rails'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 

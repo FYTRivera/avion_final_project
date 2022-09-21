@@ -2,9 +2,18 @@
 
 <%= render @meeting %>
 
+
+
 <div>
-  <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> |
+  <% if current_user.role == 1 %>
+  <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> 
+  <%else%>
+  <%= link_to "Book this meeting", edit_meeting_path(@meeting) %> 
+  <%end%>
+  |
   <%= link_to "Back to meetings", meetings_path %>
 
-  <%= button_to "Destroy this meeting", @meeting, method: :delete %>
+  <%if current_user.role == 1%>
+    <%= button_to "Destroy this meeting", @meeting, method: :delete %>
+  <%end%>
 </div>

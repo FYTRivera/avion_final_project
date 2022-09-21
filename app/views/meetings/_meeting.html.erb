@@ -20,13 +20,13 @@
   </p>
 
   <p>
-    <strong>Is Booked? :</strong>
-    <%= meeting.is_booked %> 
+    <strong>Is Approved? :</strong>
+    <%= meeting.is_approved %> 
   </p>
 
   <p>
     <strong>Client:</strong>
-    <%= meeting.client_email %> 
+    <%= meeting.client_email == ""? "None": meeting.client_email %> 
   </p>
 
 </div>

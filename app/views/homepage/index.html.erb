@@ -8,6 +8,12 @@
         <p><%= link_to "New Meeting", new_meeting_path %>
     <% else %>
     <% end %>
+    <p><%= link_to "To Calendar", calendar_path%></p>
+    <p><%= link_to "To Available Sessions Calendar", available_path%></p>
+    <p><%= link_to "To Scheduled Sessions Calendar", scheduled_path%></p>
+    <p><%= link_to "To Unapproved Sessions Calendar", unapproved_path%></p>
     <p><%= link_to "Edit Account", edit_user_registration_path %></p>
     <p><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></p>
+
 <%end%>
+

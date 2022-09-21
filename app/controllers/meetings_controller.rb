@@ -1,15 +1,16 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: %i[ show edit update destroy ]
+  
 
   # GET /meetings or /meetings.json
   def index
-    # if current_user.role == 1
-    #   @meetings = Meeting.all
-    # else
-    #   @meetings = Meeting.where(client_email: '')
-    # end
+    if current_user.role == 1
+      @meetings = Meeting.all
+    elsif current_user.role == 0
+      @meetings = Meeting.where(client_email: '')
+    end
 
-    @meetings = Meeting.all
+    # @meetings = Meeting.all
 
     @meetings.each do |meeting|
       @doctor = User.find(meeting.user_id)
@@ -34,11 +35,20 @@ class MeetingsController < ApplicationController
   def create
     @meeting = Meeting.new(meeting_params)
 
-    if @meeting.client_email != ''
-      @meeting.is_booked = true 
-    else
-      @meeting.is_booked = false
-    end
+    # if current_user.role == 1
+    #   if @meeting.client_email != ''
+    #     @meeting.is_booked = true 
+    #   else
+    #     @meeting.is_booked = false
+    #   end
+    # elsif current_user.role == 0
+    #   if @meeting.is_booked == true
+    #     @meeting.client_email = current_user.email
+    #     # debugger
+    #   else
+    #     @meeting.client_email = ''
+    #   end
+    # end
 
     respond_to do |format|
       if @meeting.save
@@ -54,6 +64,18 @@ class MeetingsController < ApplicationController
   # PATCH/PUT /meetings/1 or /meetings/1.json
   def update
 
+    old_email = @meeting.client_email
+
+    if @meeting.update(client_email_params)
+      if old_email != @meeting.client_email
+        BookedSessionMailer.with(meeting: @meeting).booked_session.deliver_later
+        # ApprovalMailer.with(meeting: @meeting).approval_made.deliver_later
+      end
+    end
+
+      if @meeting.is_approved
+        ApprovalMailer.with(meeting: @meeting).approval_made.deliver_later
+      end
     # if current_user.role == 0
     #   if @meeting.is_booked == true
     #     @meeting.client_email = current_user.email
@@ -70,11 +92,12 @@ class MeetingsController < ApplicationController
         @meeting.is_booked = false
       end
     elsif current_user.role == 0
-      if @meeting.is_booked == true
-        @meeting.client_email = current_user.email
-        # debugger
-      else
-      end
+      # if @meeting.is_booked == true
+      #   @meeting.client_email = current_user.email
+      #   # debugger
+      # else
+      #   @meeting.client_email = ''
+      # end
     end
 
     respond_to do |format|
@@ -104,8 +127,29 @@ class MeetingsController < ApplicationController
       @meeting = Meeting.find(params[:id])
     end
 
+    # def set_client_email
+    #   if current_user.role == 1
+    #     if @meeting.client_email != ''
+    #       @meeting.is_booked = true 
+    #     else
+    #       @meeting.is_booked = false
+    #     end
+    #   elsif current_user.role == 0
+    #     if @meeting.is_booked == true
+    #       @meeting.client_email = current_user.email
+    #       # debugger
+    #     else
+    #       @meeting.client_email = ''
+    #     end
+    #   end
+    # end
+
     # Only allow a list of trusted parameters through.
+    def client_email_params
+      params.require(:meeting).permit(:client_email)
+    end
+
     def meeting_params
-      params.require(:meeting).permit(:name, :start_time, :end_time, :user_id, :is_booked, :client_email)
+      params.require(:meeting).permit(:name, :start_time, :end_time, :user_id, :is_booked, :client_email, :is_approved)
     end
 end

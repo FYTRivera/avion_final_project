@@ -11,6 +11,7 @@
     </div>
   <% end %>
 
+<%if current_user.role == 1%>
   <div>
     <%= form.label :name, style: "display: block" %>
     <%= form.text_field :name %>
@@ -30,23 +31,25 @@
     <%= form.label :user_id, style: "display: block" %>
     <%= form.text_field :user_id, value: current_user.id %>
   </div>
-
-  <% if current_user.role == 0 %>
+  
   <div>
     <div class="field">
-    <%= form.label "Book Session?" %><br />
-    <%= form.label :is_booked, "Yes", value: "true"  %>
-    <%= form.radio_button :is_booked, true, checked: meeting.is_booked %>
-    <%= form.label :is_booked, "No", value: "false" %>
-    <%= form.radio_button :is_booked, false, checked: !meeting.is_booked %>
+    <%= form.label "Approved?" %><br />
+    <%= form.label :is_approved, "Yes", value: "true"  %>
+    <%= form.radio_button :is_approved, true, checked: meeting.is_approved %>
+    <%= form.label :is_approved, "No", value: "false" %>
+    <%= form.radio_button :is_approvedd, false, checked: !meeting.is_approved %>
     </div>
   </div>
   <%else%>
-    <div>
-      <%= form.label :client_email, style: "display: block" %>
-      <%= form.text_field :client_email %>
-    </div>
+    
   <%end%>
+
+  <div>
+    <%= form.label :client_email, style: "display: block" %>
+    <%= form.text_field :client_email %>
+  </div>
+
   <div>
     <%= form.submit %>
   </div>
