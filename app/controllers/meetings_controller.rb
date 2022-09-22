@@ -7,7 +7,7 @@ class MeetingsController < ApplicationController
     if current_user.role == 1
       @meetings = Meeting.all
     elsif current_user.role == 0
-      @meetings = Meeting.where(client_email: '')
+      @meetings = Meeting.where(client_email: current_user.email)
     end
 
     # @meetings = Meeting.all
@@ -69,6 +69,7 @@ class MeetingsController < ApplicationController
     if @meeting.update(client_email_params)
       if old_email != @meeting.client_email
         BookedSessionMailer.with(meeting: @meeting).booked_session.deliver_later
+        DoctorNewSessionMailer.with(meeting: @meeting).new_session_applied.deliver_later
         # ApprovalMailer.with(meeting: @meeting).approval_made.deliver_later
       end
     end

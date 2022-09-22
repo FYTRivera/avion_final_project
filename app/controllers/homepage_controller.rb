@@ -8,20 +8,36 @@ class HomepageController < ApplicationController
   end
 
   def calendar
-    @meetings = Meeting.all
+    if current_user.role == 1
+      @meetings = Meeting.all
+    elsif current_user.role == 0
+      @meetings = Meeting.where(client_email: current_user.email)
+    end
   end
 
   def available
-    @meetings = Meeting.where(client_email: '', 
-    start_time: Time.now..Time.now.end_of_month.end_of_week)
+    
+      @meetings = Meeting.where(client_email: '', 
+      start_time: Time.now..Time.now.end_of_month)
+    
   end
 
   def scheduled
-    @meetings = Meeting.where.not(client_email: [nil,'']).where(start_time: Time.now.beginning_of_month.beginning_of_week..Time.now.end_of_month.end_of_week)
+    if current_user.role == 1
+      @meetings = Meeting.where.not(client_email: [nil,'']).where(start_time: Time.now.beginning_of_month..Time.now.end_of_month)
+    elsif current_user.role == 0
+      @meetings = Meeting.where(client_email: current_user.email, start_time: Time.now.beginning_of_month..Time.now.end_of_month)
+    end
+    
   end
 
   def unapproved
-    @meetings = Meeting.where.not(client_email: [nil,'']).where(is_approved: false).where(start_time: Time.now..Time.now.end_of_month.end_of_week)
+    if current_user.role == 1
+    @meetings = Meeting.where.not(client_email: [nil,'']).where(is_approved: false).where(start_time: Time.now..Time.now.end_of_month)
+    elsif current_user.role == 0
+      @meetings = Meeting.where(client_email: current_user.email, is_approved: false, start_time: Time.now..Time.now.end_of_month)
+    end
+
   end
 
 end
