@@ -7,5 +7,9 @@
     <p>Age: <%= user.age%></p>
     <%# <p>Confirmed on: <%= user.confirmed_at</p> %>
     <p>Role: <%= user.role == 0 ? "Client" : "Doctor" %></p>
+    <p>
+        <strong>Image data:</strong>
+        <%= image_tag user.image_url if user.image %>
+    </p>
 
 </div>

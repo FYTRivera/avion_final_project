@@ -24,6 +24,9 @@ gem 'simple_calendar', '~> 2.4', '>= 2.4.3'
 # Sass
 gem 'sass-rails'
 
+#Cloudinary Shrine
+gem "shrine-cloudinary", "~> 1.1"
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -74,6 +77,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem "dotenv-rails"
 end
 
 group :test do
