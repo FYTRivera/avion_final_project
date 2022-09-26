@@ -24,6 +24,12 @@ gem 'simple_calendar', '~> 2.4', '>= 2.4.3'
 # Sass
 gem 'sass-rails'
 
+#bootstrap
+gem 'bootstrap-sass', '~> 3.4', '>= 3.4.1'
+
+# jquery
+gem 'jquery-rails'
+
 #Cloudinary Shrine
 gem "shrine-cloudinary", "~> 1.1"
 

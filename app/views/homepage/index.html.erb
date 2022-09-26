@@ -1,6 +1,15 @@
 <% if !user_signed_in? %>
-    <p><%= link_to "Login", new_user_session_path %></p>
-    <p><%= link_to "Create Account", new_user_registration_path %></p>
+<div class="nav">
+<img src="FR.png" class="image">
+    <div class="login">
+        <%= link_to "Login", new_user_session_path %>
+    </div>
+    <div class="signup">
+        <p><%= link_to "Create Account", new_user_registration_path %></p>
+    </div>
+</div>
+<h1><strong>book</strong></h1>
+<h1><strong>a session.</strong></h1>
 <%else%>
     <h1>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h1>
     <% if @user.role == 1 %>
