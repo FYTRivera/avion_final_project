@@ -1,17 +1,20 @@
 <% if !user_signed_in? %>
 <div class="nav">
-<img src="FR.png" class="image">
-    <div class="login">
-        <%= link_to "Login", new_user_session_path %>
-    </div>
-    <div class="signup">
-        <p><%= link_to "Create Account", new_user_registration_path %></p>
-    </div>
+    <strong><p><%= link_to "LOGIN", new_user_session_path, class:"login" %></p></strong>
+    <strong><p><%= link_to "SIGN UP", new_user_registration_path, class:"signup" %></p></strong>
 </div>
-<h1><strong>book</strong></h1>
-<h1><strong>a session.</strong></h1>
-<div class="book">
-helllo
+<div class="homepage-container">
+    <div class="book-a-session">
+        <h1><strong>book</strong></h1>
+        <h1><strong>a session.</strong></h1>
+        <img src="logo.PNG" class="logo">
+    </div>
+    <div class="card">
+        <img src="book.png">
+        <%= link_to(new_user_registration_path) do %>
+            <img src = "sign.png" class="img-top">
+        <% end %>
+    </div>
 </div>
 <%else%>
     <h1>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h1>
