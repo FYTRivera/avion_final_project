@@ -2,7 +2,12 @@
 @import "simple_calendar";
 @import "bootstrap-sprockets";
 @import "bootstrap";
+// @import "signup.scss";
 
+
+*{
+    font-family: 'Alegreya Sans', sans-serif;
+}
 
 body {
     height: 100vh;
@@ -16,8 +21,14 @@ h1{
     font-family: 'Alegreya Sans', sans-serif;
 }
 
+h2{
+    margin: 0;
+    font-size: 5rem;
+}
+
 p{
     margin: 0;
+    font-size: 2rem;
     font-family: 'Alegreya Sans', sans-serif;
 }
 
@@ -26,14 +37,23 @@ p{
     flex-direction: row;
     justify-content: flex-end;
     background-color: white;
-    height: 7.5vh;
+    height: max-content;
     width:100%;
-    padding: 2vw
+    padding: 2vw;
+    padding-right: 5vw;
+    padding-bottom: 0;
+    z-index: 99;
 }
 
 .book-a-session{
-    padding: 5vw;
+    padding-left: 5vw;
+    // padding-top: 2vw;
 }
+
+.book-text{
+    font-size: 10rem;
+}
+
 
 .homepage-container{
     display: flex;
@@ -50,10 +70,20 @@ p{
     align-items: center;
     padding: 10px;
     margin: 10px;
-    margin-right: 5px;
+    margin-right: 1.5vw;
     cursor: pointer;
     border-radius: 50px;
     font-size: 1.8rem;
+    z-index: 99;
+    transition: background-color 1s, color 1s;
+    // transition: color 1s;
+}
+
+.login:hover{
+    background-color: rgb(128, 194, 128);
+    color: black;
+    text-decoration: none;
+    z-index: 99;
 }
 
 .signup{
@@ -69,39 +99,60 @@ p{
     margin-left: 5px;
     border-radius: 50px;
     font-size: 1.8rem;
+    z-index: 99;
+    transition: background-color 1s, color 1s;
 }
 
-.image{
-    max-width: 100%;
-    height: auto;
-    transition: transform .7s ease-in-out;
+.signup:hover{
+    background-color: rgb(118, 148, 226);
+    color: black;
+    text-decoration: none;
+    z-index: 99;
 }
 
-.image:hover {
-    transform: rotate(360deg);
-  }
+// .image{
+//     max-width: 100%;
+//     height: auto;
+//     transition: transform .7s ease-in-out;
+//     z-index: 0;
+// }
 
-.book{
-    width: 100%;
-    height: 100%;
-    background-image: url("book.png");
-    background-repeat: no-repeat;
-}
+// .image:hover {
+//     transform: rotate(360deg);
+//     z-index: 0;
+//   }
 
-.book:hover{
-    background-image: url("sign.png");
-    background-repeat: no-repeat;
-    animation: fadeIn 5s;
-}
+// .book{
+//     width: 100%;
+//     height: 100%;
+//     background-image: url("book.png");
+//     background-repeat: no-repeat;
+//     z-index: -1;
+// }
+
+// .book:hover{
+//     background-image: url("sign.png");
+//     background-repeat: no-repeat;
+//     animation: fadeIn 5s;
+//     z-index: -1;
+// }
 
 
 
   .card {
-    width: 130px;
-    height: 195px;
+    width: 50vw;
+    height: auto;
     position: relative;
     display: inline-block;
-    padding: 4vw;
+    // padding: 4vw;
+    margin-left: 4vw;
+
+    z-index: 0;
+}
+
+.plain-book{
+    position: relative;
+    width: 50vw;
 }
 
 
@@ -110,8 +161,10 @@ p{
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 99;
-    padding: 4vw;
+    z-index: 1;
+    // padding: 4vw;
+    width: 50vw;
+    // padding-left: 4vw;
 
     opacity: 0.1;
     transition: opacity 1s ease-in-out;
@@ -125,15 +178,217 @@ p{
   }
 .card:hover .img-top {
     display: inline;
-    padding: 4vw;
+    // padding: 4vw;
+    // padding-left: 4vw;
     // animation: fadeIn 1s;
     opacity: 1.0;
     transition: opacity .55s ease-in-out;
     -moz-transition: opacity .55s ease-in-out;
     -webkit-transition: opacity .55s ease-in-out;
+    z-index: 1;
+}
+
+.homepage-logo{
+    width: 10vw;
 }
 
 .logo{
-    width: 10vw;
+    padding-top: 2.5vw;
+    padding-bottom: 1.5vw;
+    width: 100%;
     height: auto;
+}
+
+.FR-Clinic{
+    text-align: justify;
+}
+
+.FR-Clinic:after {
+  content: "";
+  display: inline-block;
+  width: 100%;
+}
+
+@media (max-width: 480px) {
+    .book-text{
+        font-size: 10vw;
+    }
+
+    .card{
+        display: none;
+    }
+}
+
+
+//SIGN-UP
+.signup-wrapper{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+   width:20vw;
+}
+
+.form-input{
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.7rem;
+    border: 0;
+    border-radius: 6px;
+    border-bottom: 2px solid rgb(161, 181, 232);
+    transition: 0.2s;
+}
+
+.form-input:hover {
+    border-bottom: 2px solid rgb(60, 93, 177);
+  }
+
+.form-input:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px rgba(60, 93, 177, 0.5);
+  }
+
+.form-sign-up{
+    // color: rgb(60, 93, 177);
+    font-size: 4rem;
+    margin: 20px;
+}
+
+.form-label{
+    // color: rgb(60, 93, 177);
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.sign-up-form-button{
+    width: 100%;
+      border-radius: 7px;
+      background-color: rgba(60, 93, 177, 0.75);
+      color: white;
+      cursor: pointer;
+      padding: 0.7rem 1rem;
+      border: none;
+      outline: none;
+      margin: 2rem 0rem;
+      font-size: 1.5rem;
+      transition: 0.2s;
+}
+
+.sign-up-form-button:hover{
+    background-color: rgb(60, 93, 177);
+}
+
+//LOGIN
+.login-wrapper{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form{
+   width:20vw;
+}
+
+.login-input{
+    width: 100%;
+    height: 2.5rem;
+    padding: 0.7rem;
+    border: 0;
+    border-radius: 6px;
+    border-bottom: 2px solid rgb(161, 232, 178);
+    transition: 0.2s;
+}
+
+.login-input:hover {
+    border-bottom: 2px solid rgb(60, 177, 85);
+  }
+
+.login-input:focus {
+    outline: none;
+    box-shadow: 0px 0px 0px 2px rgba(60, 177, 76, 0.5);
+  }
+
+.form-login{
+    // color: rgb(60, 93, 177);
+    font-size: 4rem;
+    margin: 20px;
+}
+
+.form-label{
+    // color: rgb(60, 93, 177);
+    font-size: 1.5rem;
+    margin-top: 10px;
+}
+
+.login-form-button{
+    width: 100%;
+    border-radius: 7px;
+    background-color: rgba(60, 177, 76, 0.75);
+    color: white;
+    cursor: pointer;
+    padding: 0.7rem 1rem;
+    border: none;
+    outline: none;
+    margin: 2rem 0rem;
+    font-size: 1.5rem;
+    transition: 0.2s;
+}
+
+.login-form-button:hover{
+    background-color: rgb(36, 108, 46);
+}
+
+//passwords
+
+//edit
+.edit-password{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+//new
+.new-password{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+//resend
+.resend-wrapper{
+    height: 100vh;
+    width: 100vw;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.resend{
+    font-size: 4rem;
+    margin-bottom: 20px;
 }
