@@ -1,3 +1,4 @@
+
 <% if !user_signed_in? %>
 <div class="nav">
     <strong><p><%= link_to "LOGIN", new_user_session_path, class:"login" %></p></strong>
@@ -20,7 +21,9 @@
     </div>
 </div>
 <%else%>
-    <h2>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h2>
+<div class="homepage-wrapper">
+    <%= render "nav"%>
+    <h3>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h3>
 
     <% if @user.image_data == nil %>
         <h3>You need to upload an ID to book a meeting.<br> Please contact your doctor or upload your ID personally through the link below.</h3>
@@ -50,6 +53,7 @@
     <% end %>
     
     <% end %>
-
+</div>
 <%end%>
+
 

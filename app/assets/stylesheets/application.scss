@@ -24,6 +24,11 @@ h1{
 h2{
     margin: 0;
     font-size: 5rem;
+    font-family: 'Alegreya Sans', sans-serif;
+}
+
+h3{
+    font-family: 'Alegreya Sans', sans-serif;
 }
 
 p{
@@ -392,3 +397,130 @@ p{
     font-size: 4rem;
     margin-bottom: 20px;
 }
+
+//homepage
+
+.homepage-wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar_homepage{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-shadow: 0px 5px 5px rgba(145, 145, 145, 0.2);
+}
+
+.logo_homepage{
+    position: relative;
+    height: 100%;
+    padding: 20px;
+}
+
+.signout{
+    display: flex;
+    width: max-content;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    margin-left: 5px;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    z-index: 99;
+    transition: background-color 1s, color 1s;
+}
+
+.signout:hover{
+    background-color: rgb(226, 118, 118);
+    color: black;
+    text-decoration: none;
+    z-index: 99;
+}
+
+.a{
+    position:relative;
+    height: 100%;
+    width: auto;
+}
+
+.new-meeting-button{
+    display: flex;
+    width: max-content;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    margin-left: 5px;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    z-index: 99;
+    transition: background-color 1s, color 1s;
+}
+
+.new-meeting-button:hover{
+    background-color: rgb(128, 194, 128);
+    color: black;
+    text-decoration: none;
+    z-index: 99;
+}
+
+.all-users-button{
+    display: flex;
+    width: max-content;
+    background-color: black;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 5px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: 10px;
+    margin-left: 5px;
+    border-radius: 50px;
+    font-size: 1.8rem;
+    z-index: 99;
+    transition: background-color 1s, color 1s;
+}
+
+.all-users-button:hover{
+    background-color: rgb(118, 148, 226);
+    color: black;
+    text-decoration: none;
+    z-index: 99;
+}
+
+.right-side-navbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+

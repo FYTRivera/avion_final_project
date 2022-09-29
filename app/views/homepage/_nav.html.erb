@@ -1,0 +1,19 @@
+<div class="navbar_homepage">
+<a href="/" class="a"><img src="logo.PNG" class="logo_homepage"></a>
+<h3><strong>Hello, <%= @user.first_name %> <%= @user.last_name %>!</strong></h3>
+
+<div class="right-side-navbar">
+<% if @user.role == 1 %>
+        
+    <p><%= link_to "New Meeting", new_meeting_path, class: "new-meeting-button" %>
+    <p><%= link_to "All Users", users_path, class: "all-users-button"%></p>
+<% else %>
+    
+    <p><%= link_to "Edit Account", edit_user_registration_path, class: "signup" %></p>
+    <p><%= link_to "Upload ID", edit_user_path(@user), class: "signup"%></p>
+    
+<% end %>
+
+<p><%= link_to "Sign Out", destroy_user_session_path, class: "signout", :method => :delete %></p>
+</div>
+</div>
