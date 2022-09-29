@@ -11,4 +11,8 @@ class User < ApplicationRecord
   has_many :meetings, dependent: :destroy
 
   validates :role, numericality: { greater_than_or_equal_to: 0, less_than: 2 }
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :age, presence: true
+  # validates :password, presence: true
 end

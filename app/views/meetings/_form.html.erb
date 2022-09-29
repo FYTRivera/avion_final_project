@@ -13,32 +13,32 @@
 
 <%if current_user.role == 1%>
   <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id, value: current_user.id,  :readonly => true %>
+    <%= form.label :user_id, class: "form-label", style: "display: block" %>
+    <%= form.text_field :user_id, class: "form-input", value: current_user.id,  :readonly => true %>
   </div>
   
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label :name, class: "form-label", style: "display: block" %>
+    <%= form.text_field :name, class: "form-input" %>
   </div>
 
   <div>
-    <%= form.label :start_time, style: "display: block" %>
-    <%= form.datetime_field :start_time %>
+    <%= form.label :start_time, class: "form-label", style: "display: block" %>
+    <%= form.datetime_field :start_time, class: "form-input" %>
   </div>
 
   <div>
-    <%= form.label :end_time, style: "display: block" %>
-    <%= form.datetime_field :end_time %>
+    <%= form.label :end_time, class: "form-label", style: "display: block" %>
+    <%= form.datetime_field :end_time, class: "form-input" %>
   </div>
   
   <div>
     <div class="field">
-    <%= form.label "Approved?" %><br />
+    <%= form.label "Approved?", class: "form-label" %><br />
     <%= form.label :is_approved, "Yes", value: "true"  %>
     <%= form.radio_button :is_approved, true, checked: meeting.is_approved %>
     <%= form.label :is_approved, "No", value: "false" %>
-    <%= form.radio_button :is_approvedd, false, checked: !meeting.is_approved %>
+    <%= form.radio_button :is_approved, false, checked: !meeting.is_approved %>
     </div>
   </div>
   <%else%>
@@ -46,11 +46,11 @@
   <%end%>
 
   <div>
-    <%= form.label :client_email, style: "display: block" %>
-    <%= form.text_field :client_email %>
+    <%= form.label :client_email, class: "form-label", style: "display: block" %>
+    <%= form.text_field :client_email, class: "form-input" %>
   </div>
 
   <div>
-    <%= form.submit %>
+    <%= form.submit "Save", class: "sign-up-form-button" %>
   </div>
 <% end %>

@@ -1,4 +1,9 @@
-<h1>Editing user</h1>
+<div class="resend-wrapper">
+<%if current_user.role==1%>
+<h2 >Editing user</h2>
+<%else%>
+<h2>Upload an ID</h2>
+<% end %>
 
 <%= form_with(model: @user) do |form| %>
   <% if @user.errors.any? %>
@@ -13,50 +18,62 @@
     </div>
   <% end %>
 
+<% if current_user.role == 1 %>
   <div>
-    <%= form.label :email, style: "display: block" %>
-    <%= form.text_field :email %>
+    <%= form.label :email, style: "display: block", class: "form-label" %>
+    <%= form.text_field :email, class: "form-input" %>
   </div>
 
   <div>
-    <%= form.label :first_name, style: "display: block" %>
-    <%= form.text_field :first_name %>
+    <%= form.label :first_name, style: "display: block", class: "form-label" %>
+    <%= form.text_field :first_name, class: "form-input" %>
   </div>
 
   <div>
-    <%= form.label :last_name, style: "display: block" %>
-    <%= form.text_field :last_name %>
+    <%= form.label :last_name, style: "display: block", class: "form-label" %>
+    <%= form.text_field :last_name, class: "form-input" %>
   </div>
 
   <div>
-    <%= form.label :age, style: "display: block" %>
-    <%= form.number_field :age %>
-  </div>
-
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+    <%= form.label :age, style: "display: block", class: "form-label" %>
+    <%= form.number_field :age, class: "form-input" %>
   </div>
 
   <div>
     <div class="field">
-    <%= form.label :role %><br />
-    <%= form.label :role, "Client", value: "0"  %>
+    <%= form.label :role, class: "form-label" %><br />
+    <%= form.label :role, "Client", value: "0", class: "form-label"  %>
     <%= form.radio_button :role, 0, checked: @user.role==0 %>
-    <%= form.label :role, "Doctor", value: "1" %>
+    <%= form.label :role, "Doctor", value: "1", class: "form-label" %>
     <%= form.radio_button :role, 1, checked: @user.role==1 %>
     </div>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="field">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image %>
+  </div>
+
+<% else %>
+  <div class="field">
+    <%= form.label :image, class: "form-label" %>
+    <%= form.file_field :image %>
   </div>
 <% end %>
 
+  <div>
+    <%= form.submit "Save", class: "sign-up-form-button" %>
+  </div>
+<% end %>
 
 <br>
 
+<%if current_user.role==1%>
 <div>
   <%= link_to "Show this user", @user %> |
   <%= link_to "Back to users", users_path %>
+</div>
+<%else%>
+  <%= link_to "Back to Home", root_path %>
+<% end %>
 </div>
