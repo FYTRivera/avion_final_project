@@ -42,10 +42,20 @@
   <div>
     <div class="field">
     <%= form.label :role, class: "form-label" %><br />
-    <%= form.label :role, "Client", value: "0", class: "form-label"  %>
+    <%= form.label :role, "Client", value: "0" %>
     <%= form.radio_button :role, 0, checked: @user.role==0 %>
-    <%= form.label :role, "Doctor", value: "1", class: "form-label" %>
+    <%= form.label :role, "Doctor", value: "1" %>
     <%= form.radio_button :role, 1, checked: @user.role==1 %>
+    </div>
+  </div>
+
+  <div>
+    <div class="field">
+    <%= form.label :is_approved %><br />
+    <%= form.label :is_approved, "Yes", value: "true"  %>
+    <%= form.radio_button :is_approved, true, checked: @user.is_approved %>
+    <%= form.label :is_approved, "No", value: "false" %>
+    <%= form.radio_button :is_approved, false, checked: !@user.is_approved %>
     </div>
   </div>
 
