@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   # GET /users or /users.json
   def index
     if current_user.role == 1
-      @users = User.all
+      # @users = User.all
+      @q = User.ransack(params[:q])
+      @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+      # @people = @q.result(distinct: true)
     else
       @users = User.where(id: current_user.id)
     end
@@ -69,6 +72,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:email, :password, :first_name, :last_name, :age, :role, :image)
+      params.require(:user).permit(:email, :password, :first_name, :last_name, :age, :role, :image, :is_approved)
     end
 end

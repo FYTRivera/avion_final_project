@@ -33,6 +33,12 @@ gem 'jquery-rails'
 #Cloudinary Shrine
 gem "shrine-cloudinary", "~> 1.1"
 
+# paginate
+gem 'will_paginate', '~> 3.3'
+
+# ransack
+gem 'ransack', '~> 3.2', '>= 3.2.1'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 
@@ -92,3 +98,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+group :development, :test do
+  gem "rspec-rails"
+end
+
+

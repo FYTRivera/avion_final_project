@@ -1,5 +1,13 @@
 <%= render "nav"%>
-<%= month_calendar(events: @meetings) do |date, meetings| %>
+<%= render "nav-cards" %>
+<div class="calendar-wrapper">
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :name_or_client_email_cont %>
+  <%= f.search_field :name_or_client_email_cont %>
+
+  <%= f.submit %>
+<%= month_calendar(events: @sessions) do |date, meetings| %>
     <%= date %>
     <% meetings.each do |meeting|%>
         <br/>
@@ -14,4 +22,7 @@
     <% end %>
 <% end %>
 
+<% end %>
+
 <%= link_to "Back to Home", root_path %>
+</div>

@@ -5,9 +5,12 @@ class MeetingsController < ApplicationController
   # GET /meetings or /meetings.json
   def index
     if current_user.role == 1
-      @meetings = Meeting.all
+      # @meetings = Meeting.all
+      @q = Meeting.ransack(params[:q])
+      @meetings = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
+      @calendar_sessions = @q.result(distinct: true)
     elsif current_user.role == 0
-      @meetings = Meeting.where(client_email: current_user.email)
+      @meetings = Meeting.where(client_email: current_user.email).paginate(page: params[:page], per_page: 5)
     end
 
     # @meetings = Meeting.all

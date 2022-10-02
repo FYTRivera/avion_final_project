@@ -1,14 +1,24 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
+<%= render "layouts/nav"%>
+<div class="users-wrapper">
+<h2>Users</h2>
 
 <div id="users">
-<table>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :first_name_or_last_name_or_email_cont %>
+  <%= f.search_field :first_name_or_last_name_or_email_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+<table class="table table-bordered table-striped">
         <tr>
             <th>ID: </th>
             <th>Email: </th>
             <th>First Name: </th>
             <th>Last Name: </th>
+            <th>Role: </th>
             <th>Age: </th>
             <th>Link: </th>
         </tr>
@@ -16,6 +26,9 @@
     <%= render user %>
   <% end %>
   </table>
+  <%= will_paginate @users %>
 </div>
 
 <%= link_to "Back to Home", root_path %>
+
+</div>

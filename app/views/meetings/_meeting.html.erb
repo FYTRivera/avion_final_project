@@ -1,32 +1,29 @@
-<div id="<%= dom_id meeting %>">
-  <p>
-    <strong>Name:</strong>
+<tr>
+  <td>
     <%= meeting.name %>
-  </p>
+  </td>
 
-  <p>
-    <strong>Doctor:</strong>
+  <td>
     <%= @doctor.first_name %> <%= @doctor.last_name %>
-  </p>
+  </td>
 
-  <p>
-    <strong>Start time:</strong>
-    <%= meeting.start_time %>
-  </p>
+  <td>
+    <%= meeting.start_time.strftime('%I:%M %p') %>
+  </td>
 
-  <p>
-    <strong>End time:</strong>
-    <%= meeting.end_time %>
-  </p>
+  <td>
+    <%= meeting.end_time.strftime('%I:%M %p') %>
+  </td>
 
-  <p>
-    <strong>Is Approved? :</strong>
+  <td>
     <%= meeting.is_approved %> 
-  </p>
+  </td>
 
-  <p>
-    <strong>Client:</strong>
+  <td>
     <%= meeting.client_email == ""? "None": meeting.client_email %> 
-  </p>
+  </td>
 
-</div>
+  <td>
+    <%= link_to "Show Meeting", meeting %>
+  </td>
+</tr>

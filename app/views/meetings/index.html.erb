@@ -1,21 +1,62 @@
-<p style="color: green"><%= notice %></p>
+<div class="calendar-wrapper">
 
-<h1>Meetings</h1>
+<%= render "layouts/nav" %>
+<%= render "homepage/nav-cards" %>
 
-<div id="meetings">
+<h2>Meetings</h2>
+
+<%# table %>
+
+<table class="table table-bordered table-striped">
+        <tr>
+            <th>Name: </th>
+            <th>Doctor: </th>
+            <th>Start Time: </th>
+            <th>End Time: </th>
+            <th>Approved: </th>
+            <th>Client Email: </th>
+            <th>Link: </th>
+        </tr>
   <% @meetings.each do |meeting| %>
-    <%= render 'meeting', meeting: meeting, doctor: @doctor %>
-  
-    <p>
-      <%= link_to "Show this meeting", meeting %>
-    </p>
+    <%= render meeting %>
   <% end %>
-</div>
+  </table>
+  <%= will_paginate @meetings %>
+
+
+<%# calendar %>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label :name_or_client_email_cont %>
+  <%= f.search_field :name_or_client_email_cont %>
+  <%= f.select :is_approved_eq, [['Approved', true], ['Not Approved', false]], include_blank: 'All' %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= month_calendar(events: @calendar_sessions) do |date, meetings| %>
+    <%= date %>
+    <% meetings.each do |meeting|%>
+        <br/>
+        <div>
+            <%= link_to(meeting) do %>
+                <div class="event">
+                    <strong><%= meeting.name %></strong><br>
+                    <strong><%= meeting.client_email %></strong><br>
+                    <%= meeting.start_time.strftime('%I:%M %p') %> to <%= meeting.end_time.strftime('%I:%M %p') %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+<% end %>
 
 <% if current_user.role == 1%>
 <%= link_to "New meeting", new_meeting_path %>
 <%end%>
 
 <%= link_to "Back to Home", root_path%>
+
+</div>
 
 

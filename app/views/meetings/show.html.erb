@@ -1,6 +1,16 @@
-<p style="color: green"><%= notice %></p>
+<table class="table table-bordered table-striped">
+  <tr>
+      <th>Name: </th>
+      <th>Doctor: </th>
+      <th>Start Time: </th>
+      <th>End Time: </th>
+      <th>Approved: </th>
+      <th>Client Email: </th>
+      <th>Link: </th>
+  </tr>
+    <%= render @meeting %>
+</table>
 
-<%= render @meeting %>
 
 
 
