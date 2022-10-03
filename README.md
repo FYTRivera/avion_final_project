@@ -6,10 +6,12 @@ Features:
 * Clients can book appointment slots.
 * Clients can edit their own information.
 * Doctors and clients can view their appointments in a calendar.
-* Clients can pay through the app through Paymongo API (test)
+* Doctors and clients can upload their IDs.
+
 
 Tentative features:
 * A messenger bot is available for clients' inquiries.
+* Clients can pay through the app through Paymongo API (test)
 
 
 
