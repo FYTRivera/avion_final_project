@@ -11,7 +11,7 @@
 
   <%= f.submit %>
 <% end %>
-
+<div class="calendar-inner-card">
 <table class="table table-bordered table-striped">
         <tr>
             <th>ID: </th>
@@ -27,6 +27,7 @@
   <% end %>
   </table>
   <%= will_paginate @users %>
+</div>
 </div>
 
 <%= link_to "Back to Home", root_path %>

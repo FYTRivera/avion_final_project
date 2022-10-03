@@ -1,7 +1,11 @@
+<%= render "nav" %>
+<%= render "homepage/nav-cards" %>
+
+<div class="resend-wrapper edit-meeting">
 <% if current_user.role == 1 %>
-  <h1>Editing meeting</h1>
+  <h2>Editing meeting</h2>
 <% else %>
-  <h1>Book meeting</h1>
+  <h2>Book meeting</h2>
 <%end%>
 
 <%= form_with(model: @meeting) do |form| %>
@@ -63,4 +67,5 @@
 <div>
   <%= link_to "Show this meeting", @meeting %> |
   <%= link_to "Back to meetings", meetings_path %>
+</div>
 </div>

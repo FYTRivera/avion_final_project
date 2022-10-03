@@ -1,3 +1,8 @@
+<%= render "nav" %>
+<%= render "homepage/nav-cards" %>
+
+<div class="resend-wrapper">
+<div class="calendar-inner-card">
 <table class="table table-bordered table-striped">
   <tr>
       <th>Name: </th>
@@ -10,6 +15,7 @@
   </tr>
     <%= render @meeting %>
 </table>
+</div>
 
 
 
@@ -26,4 +32,5 @@
   <%if current_user.role == 1%>
     <%= button_to "Destroy this meeting", @meeting, method: :delete %>
   <%end%>
+</div>
 </div>

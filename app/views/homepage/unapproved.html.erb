@@ -1,5 +1,8 @@
 <%= render "nav"%>
 <%= render "nav-cards" %>
+<div class="calendar-card">
+<h3>Pending Meetings</h3>
+<div class="calendar-inner-card">
 <%= month_calendar(events: @meetings) do |date, meetings| %>
     <%= date %>
     <% meetings.each do |meeting|%>
@@ -8,11 +11,12 @@
             <%= link_to(meeting) do %>
                 <div class="event">
                     <strong><%= meeting.name %></strong><br>
+                    <strong><%= meeting.client_email %></strong><br>
                     <%= meeting.start_time.strftime('%I:%M %p') %> to <%= meeting.end_time.strftime('%I:%M %p') %>
                 </div>
             <% end %>
         </div>
     <% end %>
 <% end %>
-
+</div>
 <%= link_to "Back to Home", root_path %>

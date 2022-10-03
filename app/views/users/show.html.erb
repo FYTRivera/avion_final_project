@@ -1,13 +1,14 @@
+<%= render "homepage/nav" %>
+<div class="resend-wrapper user-show">
+  <%= render "user_show", user: @user %>
 
+  <div>
+    <%= link_to "Edit this user", edit_user_path(@user) %> |
+    <%= link_to "Back to users", users_path %>
 
-<%= render "user_show", user: @user %>
-
-<div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
-  <%= link_to "Back to users", users_path %>
-
-  <% if current_user.role == 1 %>
-    <%= button_to "Destroy this user", @user, method: :delete %>
-  <% else %>
-  <% end %>
+    <% if current_user.role == 1 %>
+      <%= button_to "Destroy this user", @user, method: :delete %>
+    <% else %>
+    <% end %>
+  </div>
 </div>

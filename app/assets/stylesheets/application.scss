@@ -436,12 +436,13 @@ p{
     display: flex;
     justify-content: space-evenly;
     align-content: stretch;
-    background-color: aqua;
+    // background-color: aqua;
     // border-bottom-left-radius: 10px;
     // border-bottom-right-radius: 10px;
     // box-shadow: 0px 5px 5px rgba(145, 145, 145, 0.2);
     z-index: 998;
     color: black;
+    
 }
 
 .overview{
@@ -456,6 +457,7 @@ p{
     padding-left: 10px;
     padding-right: 10px;
     color: black;
+    box-shadow: 0px 5px 5px rgba(145, 145, 145, 0.2);
 }
 
 .logo_homepage{
@@ -566,7 +568,10 @@ p{
 
 //calendar
 
-
+.simple-calendar{
+    display:flex;
+    flex-direction: column;
+}
 
   
   .wday-0 {color:rgb(255, 109, 109);}
@@ -600,9 +605,9 @@ p{
     text-decoration: none;
 }
 
-.table{
-    margin-top: 10vh;
-}
+// .table{
+//     margin-top: 10vh;
+// }
 
 .users-wrapper{
     padding: 10vw;
@@ -639,4 +644,43 @@ p{
     text-decoration: none;
 }
 
+.calendar-card{
+    margin: 15vh;
+    padding: 30px;
+    // background-color: aqua;
+}
+
+.calendar-inner-card{
+    background-color: rgb(240, 240, 240);
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.meeting-wrapper{
+    height: 100%;
+    width: 100%;
+    background-color: rgb(246, 246, 246);
+    // background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20vh;
+}
+
+.edit-meeting{
+    margin-top: 10vh;
+    background-color: rgb(246, 246, 246);
+}
+
+.user-show{
+    margin-top: 20vh;
+    height: 100vh;
+    
+}
+
+.image{
+    width: 10vw;
+    height: 10vw;
+}
 

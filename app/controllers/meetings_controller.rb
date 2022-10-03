@@ -10,7 +10,9 @@ class MeetingsController < ApplicationController
       @meetings = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
       @calendar_sessions = @q.result(distinct: true)
     elsif current_user.role == 0
-      @meetings = Meeting.where(client_email: current_user.email).paginate(page: params[:page], per_page: 5)
+      @q = Meeting.ransack(params[:q])
+      @meetings = @q.result(distinct: true).where(client_email: current_user.email).paginate(page: params[:page], per_page: 5)
+      @calendar_sessions = @q.result(distinct: true).where(client_email: current_user.email)
     end
 
     # @meetings = Meeting.all
