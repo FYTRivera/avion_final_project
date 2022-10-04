@@ -6,10 +6,19 @@ class MeetingsController < ApplicationController
   def index
     if current_user.role == 1
       # @meetings = Meeting.all
+      params[:q] ||= {}
+      if params[:q][:created_at_lteq].present?
+        params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day
+      end
+
       @q = Meeting.ransack(params[:q])
       @meetings = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
       @calendar_sessions = @q.result(distinct: true)
     elsif current_user.role == 0
+      params[:q] ||= {}
+      if params[:q][:created_at_lteq].present?
+        params[:q][:created_at_lteq] = params[:q][:created_at_lteq].to_date.end_of_day
+      end
       @q = Meeting.ransack(params[:q])
       @meetings = @q.result(distinct: true).where(client_email: current_user.email).paginate(page: params[:page], per_page: 5)
       @calendar_sessions = @q.result(distinct: true).where(client_email: current_user.email)

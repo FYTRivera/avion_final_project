@@ -27,9 +27,9 @@ class HomepageController < ApplicationController
 
   def scheduled
     if current_user.role == 1
-      @meetings = Meeting.where.not(client_email: [nil,'']).where(start_time: Time.now.beginning_of_month..Time.now.end_of_month, is_approved: true)
+      @meetings = Meeting.where.not(client_email: [nil,'']).where(start_time: Time.now..Time.now.end_of_month, is_approved: true)
     elsif current_user.role == 0
-      @meetings = Meeting.where(client_email: current_user.email, start_time: Time.now.beginning_of_month..Time.now.end_of_month, is_approved: true)
+      @meetings = Meeting.where(client_email: current_user.email, start_time: Time.now..Time.now.end_of_month, is_approved: true)
     end
     
   end

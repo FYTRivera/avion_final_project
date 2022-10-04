@@ -35,6 +35,15 @@
   <%= f.submit %>
 <% end %>
 
+<%= search_form_for @q do |f| %>
+  <%= f.label 'From' %>
+  <%= f.date_field :created_at_gteq, value: f.object.try(:strftime,"%Y-%m-%d") %>
+  <strong> to </strong>
+  <%= f.date_field :created_at_lteq, value: f.object.try(:strftime,"%Y-%m-%d") %>
+
+  <%= f.submit %>
+<% end %>
+
 <%= month_calendar(events: @calendar_sessions) do |date, meetings| %>
     <%= date %>
     <% meetings.each do |meeting|%>
