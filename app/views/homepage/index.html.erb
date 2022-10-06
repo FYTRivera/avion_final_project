@@ -23,37 +23,24 @@
 <%else%>
 <div class="homepage-wrapper">
     <%= render "nav" %>
-    <%= render "nav-cards" %>
 
     <h3>Hello, <%= @user.first_name %> <%= @user.last_name %>!</h3>
 
     <% if @user.image_data == nil %>
-        <h3>You need to upload an ID to book a meeting.<br> Please contact your doctor or upload your ID personally through the link below.</h3>
-        <p><%= link_to "Upload ID", edit_user_path(@user)%></p>
+        <h3 style="text-align: center">You need to upload an ID to book a meeting.<br> Please contact your doctor or upload your ID personally through the link below.</h3>
+        <p><%= link_to "Upload ID", edit_user_path(@user), class: "sign-up-form-button"%></p>
     <% else %>
-
-        <% if @user.role == 1 %>
-            <p><%= link_to "All Users", users_path%></p>
-            <p><%= link_to "New Meeting", new_meeting_path %>
-
-            <p><%= link_to "To Meetings Overview", meetings_path%></p>
-            <p><%= link_to "To Available Sessions Calendar", available_path%></p>
-            <p><%= link_to "To Scheduled Sessions Calendar", scheduled_path%></p>
-            <p><%= link_to "To Unapproved Sessions Calendar", unapproved_path%></p>
-            <p><%= link_to "Edit Account", edit_user_registration_path %></p>
-            <p><%= link_to "Upload ID", edit_user_path(@user)%></p>
-            <p><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></p>
-
+        <% if @user.is_approved %>
+            <% if @user.role == 1 %>
+                <%= render "nav-cards" %>
+                <h3 style="text-align: center">Please choose a tab above!</h3>
+            <% else %>
+                <%= render "nav-cards" %>
+                <h3 style="text-align: center">Please choose a tab above!</h3>
+            <% end %>
         <% else %>
-            <p><%= link_to "To Calendar", calendar_path%></p>
-            <p><%= link_to "To Available Sessions Calendar", available_path%></p>
-            <p><%= link_to "To Scheduled Sessions Calendar", scheduled_path%></p>
-            <p><%= link_to "To Unapproved Sessions Calendar", unapproved_path%></p>
-            <p><%= link_to "Edit Account", edit_user_registration_path %></p>
-            <p><%= link_to "Upload ID", edit_user_path(@user)%></p>
-            <p><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></p>
+            <h3 style="text-align: center">Please wait while your doctor reviews your ID submission.</h3>
         <% end %>
-    
     <% end %>
 </div>
 <%end%>

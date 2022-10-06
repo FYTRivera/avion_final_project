@@ -9,7 +9,7 @@ class DoctorNewSessionMailer < ApplicationMailer
     @meeting = params[:meeting]
     @doctor = User.find(@meeting.user_id)
     @client = User.find_by(email: @meeting.client_email)
-    @greeting = "Hi, #{@client.first_name} #{@client.last_name} applied for a session on #{@meeting.start_time} to #{@meeting.end_time}"
+    @greeting = "Hi, #{@client.first_name} #{@client.last_name} applied for a session on #{@meeting.start_time.strftime('%Y-%m-%d | %I:%M %p')} to #{@meeting.end_time.strftime('%Y-%m-%d | %I:%M %p')}"
     
 
 

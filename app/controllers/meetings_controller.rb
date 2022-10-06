@@ -88,7 +88,7 @@ class MeetingsController < ApplicationController
       end
     end
 
-      if @meeting.is_approved
+      if @meeting.is_approved == true
         ApprovalMailer.with(meeting: @meeting).approval_made.deliver_later
       end
     # if current_user.role == 0

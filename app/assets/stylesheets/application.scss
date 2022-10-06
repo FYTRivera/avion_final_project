@@ -676,11 +676,27 @@ p{
 .user-show{
     margin-top: 20vh;
     height: 100vh;
+    padding: 5vw;
+    padding-top: 0vw;
+    margin-bottom: 20vh;
     
 }
 
 .image{
-    width: 10vw;
     height: 10vw;
+    // border: 5px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img{
+    position: relative;
+    height: 100%;
+    width: auto;
+}
+
+.alert{
+    margin-bottom: 0;
 }
 

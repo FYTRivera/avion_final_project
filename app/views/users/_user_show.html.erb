@@ -1,16 +1,29 @@
 <div id="<%= dom_id user %>">
-    
-    <p>ID: <%= user.id%></p>
-    <p>Email: <%= user.email%></p>
-    <p>First Name: <%= user.first_name%></p>
-    <p>Last Name: <%= user.last_name%></p>
-    <p>Age: <%= user.age%></p>
-    <%# <p>Confirmed on: <%= user.confirmed_at</p> %>
-    <p>Role: <%= user.role == 0 ? "Client" : "Doctor" %></p>
-    <p>Approved: <%= user.is_approved %></p>
-    <strong>Image data:</strong>
+    <table class="table table table-bordered table-striped">
+        <tr>
+            <th><strong>ID:</strong></th>
+            <th><strong>Email:</strong></th>
+            <th><strong>First Name:</strong></th>
+            <th><strong>Last Name:</strong></th>
+            <th><strong>Age:</strong></th>
+            <%# <th>Confirmed on: <%= user.confirmed_at</th> %>
+            <th><strong>Role:</strong></th>
+            <th><strong>Approved:</strong></th>
+        </tr>
+        <tr>
+            <td><%= user.id%></td>
+            <td><%= user.email%></td>
+            <td><%= user.first_name%></td>
+            <td><%= user.last_name%></td>
+            <td><%= user.age%></td>
+            <td><%= user.role == 0 ? "Client" : "Doctor" %></td>
+            <td><%= user.is_approved %></td>
+        </tr>
+    </table>
+
+    <p><strong>Image data:</strong></p>
     <p>
-        <%= image_tag user.image_url if user.image %>
+        <div class="image"><%= image_tag user.image_url if user.image %></div>
     </p>
 
 </div>

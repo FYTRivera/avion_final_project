@@ -9,7 +9,8 @@ class UsersController < ApplicationController
       @users = @q.result(distinct: true).paginate(page: params[:page], per_page: 5)
       # @people = @q.result(distinct: true)
     else
-      @users = User.where(id: current_user.id)
+      @q = User.ransack(params[:q])
+      @users = User.where(id: current_user.id).paginate(page: params[:page], per_page: 5)
     end
   end
 
