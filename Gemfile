@@ -39,6 +39,9 @@ gem 'will_paginate', '~> 3.3'
 # ransack
 gem 'ransack', '~> 3.2', '>= 3.2.1'
 
+# json
+gem 'json', '~> 2.6', '>= 2.6.2'
+
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
 

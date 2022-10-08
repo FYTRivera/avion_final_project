@@ -34,11 +34,14 @@ class MeetingsController < ApplicationController
   # GET /meetings/1 or /meetings/1.json
   def show
     @doctor = User.find(@meeting.user_id)
+    @get_link = Paymongo.get_link(@meeting.payment_id)
   end
 
   # GET /meetings/new
   def new
     @meeting = Meeting.new
+    # @paymongo = Paymongo.paymongo
+    # @test = Paymongo.result
   end
 
   # GET /meetings/1/edit
@@ -63,6 +66,10 @@ class MeetingsController < ApplicationController
     #     @meeting.client_email = ''
     #   end
     # end
+
+    @paymongo = Paymongo.paymongo
+    @test = Paymongo.result
+    @meeting.payment_id = @test["data"]["id"]
 
     respond_to do |format|
       if @meeting.save

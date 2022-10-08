@@ -52,7 +52,7 @@
   <br />
   <div>
     <%= form.label :client_email, style: "display: block" %>
-    <%= form.text_field :client_email %>
+    <%= form.text_field :client_email, value: current_user.email %>
   </div>
 
   <div>

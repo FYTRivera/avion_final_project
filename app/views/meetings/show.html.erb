@@ -11,9 +11,54 @@
       <th>End Time: </th>
       <th>Approved: </th>
       <th>Client Email: </th>
-      <th>Link: </th>
+      <th>Payment ID: </th>
+      <th>Paid: </th>
+      <% if @get_link["data"]["attributes"]["status"]!="paid" && @meeting.client_email != "" %>
+        <th>Payment Link: </th>
+      <% else %>
+      <% end %>
   </tr>
-    <%= render @meeting %>
+  <tr>
+    <td>
+      <%= @meeting.name %>
+    </td>
+
+    <td>
+      <%= @doctor.first_name %> <%= @doctor.last_name %>
+    </td>
+
+    <td>
+      <%= @meeting.start_time.strftime('%Y-%m-%d | %I:%M %p') %>
+    </td>
+
+    <td>
+      <%= @meeting.end_time.strftime('%Y-%m-%d | %I:%M %p') %>
+    </td>
+
+    <td>
+      <%= @meeting.is_approved %> 
+    </td>
+
+    <td>
+      <%= @meeting.client_email == ""? "None": @meeting.client_email %> 
+    </td>
+
+    <td>
+      <%= @meeting.payment_id %>
+    </td>
+
+    <td>
+      <%= @get_link["data"]["attributes"]["status"]%>
+    </td>
+
+    <% if @get_link["data"]["attributes"]["status"]!="paid" && @meeting.client_email != "" %>
+    <td>
+      <%= link_to "Pay Here", @get_link["data"]["attributes"]["checkout_url"], class: "sign-up-form-button", target: "_blank"%>
+    </td>
+    <% else %>
+    <% end %>
+  
+  </tr>
 </table>
 </div>
 
@@ -22,12 +67,12 @@
 
 <div>
   <% if current_user.role == 1 %>
-  <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> 
-  <%else%>
-  <%= link_to "Book this meeting", edit_meeting_path(@meeting) %> 
+    <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> 
+    <%else%>
+    <%= link_to "Book this meeting", edit_meeting_path(@meeting) %> 
   <%end%>
   |
-  <%= link_to "Back to meetings", meetings_path %>
+    <%= link_to "Back to meetings", meetings_path %>
 
   <%if current_user.role == 1%>
     <%= button_to "Destroy this meeting", @meeting, method: :delete %>

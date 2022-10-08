@@ -16,6 +16,10 @@
             <th>Approved: </th>
             <th>Client Email: </th>
             <th>Link: </th>
+            <%if current_user.role==1%>
+            <th>Delete: </th>
+            <%else%>
+            <%end%>
         </tr>
   <% @meetings.each do |meeting| %>
     <%= render meeting %>
@@ -56,6 +60,10 @@
                     <%= meeting.start_time.strftime('%I:%M %p') %> to <%= meeting.end_time.strftime('%I:%M %p') %>
                 </div>
             <% end %>
+          <% if current_user.role == 1 %>
+            <%= button_to "Destroy this meeting", meeting, method: :delete %>
+          <% else %>
+          <% end %>
         </div>
     <% end %>
 <% end %>

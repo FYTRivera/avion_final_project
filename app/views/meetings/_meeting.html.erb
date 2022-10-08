@@ -26,4 +26,9 @@
   <td>
     <%= link_to "Show Meeting", meeting %>
   </td>
+
+  <%if current_user.role==1%>
+    <td><%= button_to "Destroy this meeting", meeting, method: :delete %></td>
+  <%else%>
+  <%end%>
 </tr>
