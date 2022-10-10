@@ -68,7 +68,7 @@ p{
 .login{
     display: flex;
     width: 100px;
-    background-color: black;
+    background-color: #2EB67D;
     color: white;
     justify-content: center;
     text-align: center;
@@ -80,21 +80,22 @@ p{
     border-radius: 50px;
     font-size: 1.8rem;
     z-index: 99;
-    transition: background-color 1s, color 1s;
+    transition: background-color 1s, color 1s, box-shadow 1s;
     // transition: color 1s;
 }
 
 .login:hover{
-    background-color: rgb(128, 194, 128);
-    color: black;
+    background-color: #279768;
+    color: white;
     text-decoration: none;
     z-index: 99;
+    box-shadow: 0 0 7.5px 2.5px #2EB67D;
 }
 
 .signup{
     display: flex;
     width: 100px;
-    background-color: black;
+    background-color: #36C5F0;
     color: white;
     justify-content: center;
     align-items: center;
@@ -105,14 +106,15 @@ p{
     border-radius: 50px;
     font-size: 1.8rem;
     z-index: 99;
-    transition: background-color 1s, color 1s;
+    transition: background-color 1s, color 1s, box-shadow 1s;
 }
 
 .signup:hover{
-    background-color: rgb(118, 148, 226);
-    color: black;
+    background-color: #2fa5c9;
+    color: white;
     text-decoration: none;
     z-index: 99;
+    box-shadow: 0px 0px 7.5px 2.5px #36C5F0;
 }
 
 // .image{
@@ -469,7 +471,7 @@ p{
 .signout{
     display: flex;
     width: max-content;
-    background-color: black;
+    background-color: #E01E5A;
     color: white;
     justify-content: center;
     align-items: center;
@@ -482,14 +484,15 @@ p{
     border-radius: 50px;
     font-size: 1.8rem;
     z-index: 99;
-    transition: background-color 1s, color 1s;
+    transition: background-color 1s, color 1s, box-shadow 1s;
 }
 
 .signout:hover{
-    background-color: rgb(226, 118, 118);
-    color: black;
+    background-color: #bf194d;
+    color: white;
     text-decoration: none;
     z-index: 99;
+    box-shadow: 0 0 7.5px 2.5px #E01E5A;
 }
 
 .a{
@@ -518,8 +521,8 @@ p{
 }
 
 .new-meeting-button:hover{
-    background-color: rgb(128, 194, 128);
-    color: black;
+    background-color: #279768;
+    color: white;
     text-decoration: none;
     z-index: 99;
 }
@@ -544,8 +547,8 @@ p{
 }
 
 .all-users-button:hover{
-    background-color: rgb(118, 148, 226);
-    color: black;
+    background-color: #2fa5c9;
+    color: white;
     text-decoration: none;
     z-index: 99;
 }
@@ -595,8 +598,11 @@ p{
     height: max-content;
     background-color: rgba(133, 151, 196, 0.75);
     border-radius: 10px;
+    // border-bottom-left-radius: 0px;
+    // border-bottom-right-radius: 0px;
     color: rgb(52, 52, 52);
     transition: 1s;
+    padding: 10px;
 }
 
 .event:hover{
@@ -620,28 +626,34 @@ p{
 }
 
 .blue{
-    background-color: rgb(118, 148, 226);
+    background-color: #36C5F0;
     color: black;
 }
 
 .yellow{
-    background-color: rgb(255, 255, 145);
+    background-color: #ECB22E;
     color: black;
 }
 
 .red{
-    background-color: rgb(255, 158, 158);
+    background-color: #E01E5A;
     color: black;
 }
 
 .green{
-    background-color: rgb(163, 223, 163);
+    background-color: #2EB67D;
     color: black;
 }
 
 .black-text{
     color: black;
     text-decoration: none;
+}
+
+.white-text{
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px gray;
 }
 
 .calendar-card{
@@ -698,5 +710,14 @@ img{
 
 .alert{
     margin-bottom: 0;
+}
+
+.calendar-item-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color:black;
+    padding: 10px;
 }
 

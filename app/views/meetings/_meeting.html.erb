@@ -28,7 +28,7 @@
   </td>
 
   <%if current_user.role==1%>
-    <td><%= button_to "Destroy this meeting", meeting, method: :delete %></td>
+    <td><%= button_to "Delete this meeting", meeting, method: :delete, class: "btn btn-primary" %></td>
   <%else%>
   <%end%>
 </tr>

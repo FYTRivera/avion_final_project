@@ -52,16 +52,16 @@
     <%= date %>
     <% meetings.each do |meeting|%>
         <br/>
-        <div>
+        <div class="event">
             <%= link_to(meeting) do %>
-                <div class="event">
+                <div class="calendar-item-wrapper">
                     <strong><%= meeting.name %></strong><br>
                     <strong><%= meeting.client_email %></strong><br>
                     <%= meeting.start_time.strftime('%I:%M %p') %> to <%= meeting.end_time.strftime('%I:%M %p') %>
                 </div>
             <% end %>
           <% if current_user.role == 1 %>
-            <%= button_to "Destroy this meeting", meeting, method: :delete %>
+            <%= button_to "Delete this meeting", meeting, method: :delete, class: "btn btn-primary" %>
           <% else %>
           <% end %>
         </div>
