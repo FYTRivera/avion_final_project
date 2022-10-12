@@ -2,6 +2,9 @@
 <h2 class="form-login"><strong>Log in</strong></h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <%= render "devise/shared/error_messages", resource: resource %>
+
   <div class="field">
     <%= f.label :email, class: "form-label" %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "login-input" %>
