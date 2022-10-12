@@ -3,7 +3,7 @@
 Click [here](https://avion-final-project.herokuapp.com/) to view the app on Heroku!
 
 ## Overview
-This app was made with the intention of providing doctors a simple, easy-to-use application to keep track of clients and appointment schedules. Doctors can create meeting slots based on their availability, and clients can book available slots and pay for the meetings through the app. Doctors can screen through client account applications to approve which accounts are eligible to book meetings on the app.
+This app was made with the intention of providing doctors a simple, easy-to-use application to keep track of clients and appointment schedules. Doctors can create and approve meeting slots based on their availability, and clients can book available slots and pay for the meetings through the app. Doctors can screen through client account applications to approve which accounts are eligible to book meetings on the app.
 
 ## Features
 * Doctors can create, show, edit, and delete a client's information.
