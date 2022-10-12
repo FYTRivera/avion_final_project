@@ -35,6 +35,14 @@ class MeetingsController < ApplicationController
   def show
     @doctor = User.find(@meeting.user_id)
     @get_link = Paymongo.get_link(@meeting.payment_id)
+
+    if @get_link["data"]["attributes"]["status"] == "paid"
+      @meeting.is_paid = true
+      @meeting.save
+    else
+      @meeting.is_paid = false
+      @meeting.save
+    end
   end
 
   # GET /meetings/new

@@ -8,11 +8,11 @@
   </td>
 
   <td>
-    <%= meeting.start_time.strftime('%Y-%m-%d | %I:%M %p') %>
+    <%= meeting.start_time.strftime('%I:%M %p | %Y-%m-%d') %>
   </td>
 
   <td>
-    <%= meeting.end_time.strftime('%Y-%m-%d | %I:%M %p') %>
+    <%= meeting.end_time.strftime('%I:%M %p | %Y-%m-%d') %>
   </td>
 
   <td>
@@ -20,7 +20,7 @@
   </td>
 
   <td>
-    <%= meeting.client_email == ""? "None": meeting.client_email %> 
+    <%= meeting.client_email == "" ? "None" : meeting.client_email %> 
   </td>
 
   <td>

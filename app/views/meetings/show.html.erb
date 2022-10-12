@@ -2,80 +2,74 @@
 <%= render "homepage/nav-cards" %>
 
 <div class="resend-wrapper">
-<div class="calendar-inner-card">
-<table class="table table-bordered table-striped">
-  <tr>
-      <th>Name: </th>
-      <th>Doctor: </th>
-      <th>Start Time: </th>
-      <th>End Time: </th>
-      <th>Approved: </th>
-      <th>Client Email: </th>
-      <th>Payment ID: </th>
-      <th>Paid: </th>
-      <% if @get_link["data"]["attributes"]["status"]!="paid" && @meeting.client_email != "" %>
-        <th>Payment Link: </th>
-      <% else %>
-      <% end %>
-  </tr>
-  <tr>
-    <td>
-      <%= @meeting.name %>
-    </td>
+  <div class="calendar-inner-card">
+    <table class="table table-bordered table-striped">
+      <tr>
+          <th>Name: </th>
+          <th>Doctor: </th>
+          <th>Start Time: </th>
+          <th>End Time: </th>
+          <th>Approved: </th>
+          <th>Client Email: </th>
+          <th>Payment ID: </th>
+          <th>Paid: </th>
+          <% if @get_link["data"]["attributes"]["status"]!="paid" && @meeting.client_email != "" %>
+            <th>Payment Link: </th>
+          <% else %>
+          <% end %>
+      </tr>
+      <tr>
+        <td>
+          <%= @meeting.name %>
+        </td>
 
-    <td>
-      <%= @doctor.first_name %> <%= @doctor.last_name %>
-    </td>
+        <td>
+          <%= @doctor.first_name %> <%= @doctor.last_name %>
+        </td>
 
-    <td>
-      <%= @meeting.start_time.strftime('%Y-%m-%d | %I:%M %p') %>
-    </td>
+        <td>
+          <%= @meeting.start_time.strftime('%I:%M %p | %Y-%m-%d') %>
+        </td>
 
-    <td>
-      <%= @meeting.end_time.strftime('%Y-%m-%d | %I:%M %p') %>
-    </td>
+        <td>
+          <%= @meeting.end_time.strftime('%I:%M %p | %Y-%m-%d') %>
+        </td>
 
-    <td>
-      <%= @meeting.is_approved %> 
-    </td>
+        <td>
+          <%= @meeting.is_approved %> 
+        </td>
 
-    <td>
-      <%= @meeting.client_email == ""? "None": @meeting.client_email %> 
-    </td>
+        <td>
+          <%= @meeting.client_email == "" ? "None" : @meeting.client_email %> 
+        </td>
 
-    <td>
-      <%= @meeting.payment_id %>
-    </td>
+        <td>
+          <%= @meeting.payment_id %>
+        </td>
 
-    <td>
-      <%= @get_link["data"]["attributes"]["status"]%>
-    </td>
+        <td>
+          <%= @meeting.is_paid == true ? "PAID" : "NOT PAID" %>
+        </td>
 
-    <% if @get_link["data"]["attributes"]["status"]!="paid" && @meeting.client_email != "" %>
-    <td>
-      <%= link_to "Pay Here", @get_link["data"]["attributes"]["checkout_url"], class: "sign-up-form-button", target: "_blank"%>
-    </td>
-    <% else %>
-    <% end %>
-  
-  </tr>
-</table>
-</div>
-
-
-
-
-<div>
-  <% if current_user.role == 1 %>
-    <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> 
-    <%else%>
-    <%= link_to "Book this meeting", edit_meeting_path(@meeting) %> 
-  <%end%>
-  |
-    <%= link_to "Back to meetings", meetings_path %>
-
-  <%if current_user.role == 1%>
-    <%= button_to "Destroy this meeting", @meeting, method: :delete %>
-  <%end%>
-</div>
+        <% if @get_link["data"]["attributes"]["status"]!="paid" && @meeting.client_email != "" %>
+        <td>
+          <%= link_to "Pay Here", @get_link["data"]["attributes"]["checkout_url"], class: "sign-up-form-button", target: "_blank"%>
+        </td>
+        <% else %>
+        <% end %>
+      
+      </tr>
+    </table>
+  </div>
+  <div>
+    <% if current_user.role == 1 %>
+      <%= link_to "Edit this meeting", edit_meeting_path(@meeting) %> 
+      <%else%>
+      <%= link_to "Book this meeting", edit_meeting_path(@meeting) %> 
+    <%end%>
+      <%= link_to "Back to meetings", meetings_path %>
+    <%if current_user.role == 1%>
+      <%= button_to "Delete this meeting", @meeting, method: :delete %>
+    <%end%>
+  </div>
 </div>

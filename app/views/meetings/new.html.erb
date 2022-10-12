@@ -5,6 +5,16 @@
 <div class="meeting-wrapper">
   <h2>New meeting</h2>
 
+  <% if @meeting.errors.any? %>
+    <div style="color: red">
+      <ul>
+        <% @meeting.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <%= render "form", meeting: @meeting %>
 
   <br>

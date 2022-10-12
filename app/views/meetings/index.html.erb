@@ -34,7 +34,22 @@
 
   <%= f.label :name_or_client_email_cont %>
   <%= f.search_field :name_or_client_email_cont %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label "Approved or Not Approved:" %>
   <%= f.select :is_approved_eq, [['Approved', true], ['Not Approved', false]], include_blank: 'All' %>
+
+  <%= f.submit %>
+<% end %>
+
+<%= search_form_for @q do |f| %>
+
+  <%= f.label "Paid or Not Paid:" %>
+  <%= f.select :is_paid_eq, [['Paid', true], ['Not Paid', false]], include_blank: 'All' %>
 
   <%= f.submit %>
 <% end %>

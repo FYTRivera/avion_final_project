@@ -4,8 +4,15 @@ class Meeting < ApplicationRecord
   validates :name, presence: true
   validates :start_time, :end_time, presence: true
   validate :end_time_after_start_time
+  validate :reservations_must_not_overlap
 
   private
+
+  def reservations_must_not_overlap
+    return if self.class.where.not(id: id).where(user_id: user_id).where('start_time < ? AND end_time > ?', end_time, start_time).none?
+
+    errors.add(:base, 'Overlapping reservation exists')
+  end
 
   def end_time_after_start_time
     return if end_time.blank? || start_time.blank?
