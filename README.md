@@ -59,7 +59,7 @@ This app was made with the intention of providing doctors a simple, easy-to-use 
 ### Pending Meetings Calendar
 ![image](https://user-images.githubusercontent.com/91866638/195405916-af31cd52-72a9-4389-8b0c-ad5c80990f18.png)
 ### Pending Meetings Link
-![image](https://user-images.githubusercontent.com/91866638/195405762-b0d52c9d-8771-4df1-9f29-d64398d4c798.png)
+![image](https://user-images.githubusercontent.com/91866638/195408264-fb66a6eb-4f80-4bc6-ba8f-8159958f3ece.png)
 ## Payment Page
 ![image](https://user-images.githubusercontent.com/91866638/195406281-4c7df90e-7d9b-4197-99cb-fc29a6287162.png)
 ## Scheduled Meetings Page
