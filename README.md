@@ -44,6 +44,10 @@ This app was made with the intention of providing doctors a simple, easy-to-use 
 ![image](https://user-images.githubusercontent.com/91866638/195403415-be8cef19-e483-45dc-bdfb-1d4dd85f05c4.png)
 ## Log In Page
 ![image](https://user-images.githubusercontent.com/91866638/195403582-f85d53cf-1272-4165-8f86-8cc5a128db16.png)
+## All Users Page
+![image](https://user-images.githubusercontent.com/91866638/195404951-5b6bb7cc-36c1-45b9-b41c-b82abb3c4313.png)
+## Show User Page
+![image](https://user-images.githubusercontent.com/91866638/195405109-a42bb16d-c75b-4b22-a2a8-0e7de39f3d24.png)
 ## Meetings Overview Page
 ### Meetings Overview Table
 ![image](https://user-images.githubusercontent.com/91866638/195404280-8a24c470-4219-487a-a89a-ecc4fd6fc3ca.png)
@@ -60,10 +64,7 @@ This app was made with the intention of providing doctors a simple, easy-to-use 
 ![image](https://user-images.githubusercontent.com/91866638/195406281-4c7df90e-7d9b-4197-99cb-fc29a6287162.png)
 ## Scheduled Meetings Page
 ![image](https://user-images.githubusercontent.com/91866638/195406491-1737e3ae-692f-43ac-abd2-c74c86695616.png)
-## All Users Page
-![image](https://user-images.githubusercontent.com/91866638/195404951-5b6bb7cc-36c1-45b9-b41c-b82abb3c4313.png)
-## Show User Page
-![image](https://user-images.githubusercontent.com/91866638/195405109-a42bb16d-c75b-4b22-a2a8-0e7de39f3d24.png)
+
 
 
 
