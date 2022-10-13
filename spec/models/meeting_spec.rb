@@ -49,12 +49,18 @@ RSpec.describe Meeting, type: :model do
     it "is valid if user has multiple meetings" do
         User.create(id: 100, email:"frari2000@gmail.com", password: "123456", first_name: "Juan", last_name: "Cruz", age: "18")
         Meeting.create(user_id: 100, name: "meeting 1", start_time: "Wed, 21 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Wed, 21 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)
-        expect(Meeting.create(user_id: 100, name: "meeting 2", start_time: "Wed, 21 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Wed, 21 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)).to be_valid
+        expect(Meeting.create(user_id: 100, name: "meeting 2", start_time: "Thurs, 22 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Thurs, 22 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)).to be_valid
     end
 
     it "is valid if meetings have the same name" do
         User.create(id: 100, email:"frari2000@gmail.com", password: "123456", first_name: "Juan", last_name: "Cruz", age: "18")
         Meeting.create(user_id: 100, name: "meeting", start_time: "Wed, 21 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Wed, 21 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)
-        expect(Meeting.create(user_id: 100, name: "meeting", start_time: "Wed, 21 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Wed, 21 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)).to be_valid
+        expect(Meeting.create(user_id: 100, name: "meeting", start_time: "Thurs, 22 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Thurs, 22 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)).to be_valid
+    end
+
+    it "is valid not if meetings have overlapping time" do
+        User.create(id: 100, email:"frari2000@gmail.com", password: "123456", first_name: "Juan", last_name: "Cruz", age: "18")
+        Meeting.create(user_id: 100, name: "meeting", start_time: "Wed, 21 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Wed, 21 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)
+        expect(Meeting.create(user_id: 100, name: "meeting", start_time: "Wed, 21 Sep 2022 18:35:00.000000000 UTC +00:00", end_time: "Wed, 21 Sep 2022 19:35:00.000000000 UTC +00:00", is_approved: false, client_email: nil)).to be_invalid
     end
 end
